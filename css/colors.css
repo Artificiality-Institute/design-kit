@@ -1,0 +1,27 @@
+/* =========================================================================
+   Artificiality Institute design kit — Layer 2: named colors
+   Constants. Every brand hue the Institute uses, by name, in every project,
+   whatever palette is active. Palettes (Layer 3) pick from these to fill the
+   slots that components use. Add a family here when a new palette brings new
+   hues; never rename or change an existing value (add a new name instead).
+   ========================================================================= */
+
+:root {
+  /* — Institute core (sampled from the wordmark and icon) ————————————— */
+  --brand-blue:        #054364;   /* primary brand (MAIN BLUE wordmark) */
+  --brand-blue-deep:   #032E45;   /* hover / pressed */
+  --brand-blue-soft:   #1F668A;   /* tints, links on cream */
+  --brand-blue-tint:   #DCE7EE;   /* faint wash */
+
+  /* — Earth accents ———————————————————————————————————————————————————— */
+  --clay:              #C8643C;   /* terracotta: call-outs, highlight */
+  --clay-deep:         #A04E2C;
+  --ochre:             #D9A441;   /* mustard: secondary accent */
+  --moss:              #6B7A4F;   /* green: tags, success */
+  --plum:              #6E3A4E;   /* rare, editorial flourish */
+  --sand:              #E8DCC0;   /* subdued fills */
+
+  /* — Summit 2027 ———————————————————————————————————————————————————————
+     Added here, by name, when the Summit 2027 palette arrives from design
+     (see docs/palette-brief.md), alongside css/palettes/summit-2027.css. */
+}

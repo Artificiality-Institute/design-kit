@@ -1,0 +1,157 @@
+/* =========================================================================
+   Artificiality Institute design kit — Layer 4: semantic roles and base styles
+   What components actually reference. Roles resolve through palette slots and
+   the neutrals, so switching data-palette re-colors everything below.
+   ========================================================================= */
+
+:root {
+  /* — Text ——————————————————————————————————————————————————————————— */
+  /* Body text is ink-1000, the warmest near-black: ink on paper, not text on
+     screen. Decision 2026-04, locked. */
+  --fg-1:              var(--ink-1000);
+  --fg-2:              var(--ink-700);
+  --fg-3:              var(--ink-500);
+  --fg-muted:          var(--ink-400);
+  --fg-on-primary:     var(--on-primary);
+  --fg-on-warm:        var(--on-accent-warm);
+  --fg-on-inverse:     var(--paper);
+
+  /* — Surfaces ——————————————————————————————————————————————————————— */
+  --bg:                var(--paper);
+  --bg-elevated:       var(--paper-soft);
+  --bg-warm:           var(--paper-warm);
+  --bg-inverse:        var(--ink-900);
+  --bg-primary:        var(--primary);
+  --bg-accent-warm:    var(--accent-warm);
+
+  /* — Lines ————————————————————————————————————————————————————————— */
+  --border:            var(--ink-200);
+  --border-strong:     var(--ink-300);
+  --border-hairline:   color-mix(in oklab, var(--ink-900) 8%, transparent);
+
+  /* — Links: lead color with a soft underline. Decision 2026-04, locked. — */
+  --link:                 var(--primary);
+  --link-hover:           var(--primary-deep);
+  --link-underline:       color-mix(in oklab, var(--primary) 35%, transparent);
+  --link-underline-hover: currentColor;
+  --selection-bg:         color-mix(in oklab, var(--primary) 22%, transparent);
+
+  /* — Status ————————————————————————————————————————————————————————— */
+  --success:           var(--positive);
+  --warning:           var(--caution);
+  --danger:            var(--negative);
+}
+
+/* ---------- Slide moods: full-bleed surfaces for social frames and decks --- */
+/* Set data-mood on a slide or section; text roles follow. */
+[data-mood="paper"]   { --bg: var(--paper);        --fg-1: var(--ink-1000); --fg-2: var(--ink-700); --fg-3: var(--ink-500); --border: var(--ink-200); }
+[data-mood="ink"]     { --bg: var(--ink-900);      --fg-1: var(--paper);    --fg-2: var(--ink-200); --fg-3: var(--ink-300); --border: color-mix(in oklab, var(--paper) 18%, transparent); }
+[data-mood="primary"] { --bg: var(--primary);      --fg-1: var(--on-primary); --fg-2: color-mix(in oklab, var(--on-primary) 82%, transparent); --fg-3: color-mix(in oklab, var(--on-primary) 65%, transparent); --border: color-mix(in oklab, var(--on-primary) 22%, transparent); }
+[data-mood="warm"]    { --bg: var(--accent-warm);  --fg-1: var(--on-accent-warm); --fg-2: color-mix(in oklab, var(--on-accent-warm) 82%, transparent); --fg-3: color-mix(in oklab, var(--on-accent-warm) 65%, transparent); --border: color-mix(in oklab, var(--on-accent-warm) 22%, transparent); }
+[data-mood] { background: var(--bg); color: var(--fg-1); }
+
+/* ============================================================
+   Base element styles: drop the kit in and the page reads as
+   "Artificiality" without further work.
+   ============================================================ */
+
+html, body {
+  background: var(--bg);
+  color: var(--fg-1);
+  font-family: var(--font-serif);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  font-feature-settings: "kern", "liga", "onum";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection { background: var(--selection-bg); }
+
+/* Hedvig Letters Serif is a single-weight display face: never bold, never italic. */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--fg-1);
+  font-weight: var(--weight-regular);
+  margin: 0;
+  text-wrap: balance;
+}
+h1 { font-size: var(--text-5xl); line-height: var(--leading-tight);  letter-spacing: var(--tracking-tighter); }
+h2 { font-size: var(--text-4xl); line-height: var(--leading-snug);   letter-spacing: var(--tracking-tighter); }
+h3 { font-size: var(--text-3xl); line-height: var(--leading-snug);   letter-spacing: var(--tracking-tight); }
+h4 { font-size: var(--text-2xl); line-height: var(--leading-normal); letter-spacing: var(--tracking-tight); }
+
+.eyebrow {
+  font-family: var(--font-serif);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  color: var(--fg-3);
+}
+
+/* The signature micro-label: uppercase, tracked-out mono. */
+.label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  color: var(--fg-3);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-size: var(--text-7xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tightest);
+  font-weight: var(--weight-regular);
+}
+
+.lede {
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  line-height: var(--leading-normal);
+  color: var(--fg-2);
+  font-style: italic;
+  text-wrap: pretty;
+}
+
+p { margin: 0 0 1em 0; text-wrap: pretty; hanging-punctuation: first last; }
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.18em;
+  text-decoration-color: var(--link-underline);
+  transition: color var(--duration-fast) var(--ease-out),
+              text-decoration-color var(--duration-fast) var(--ease-out);
+}
+a:hover { color: var(--link-hover); text-decoration-color: var(--link-underline-hover); }
+
+/* Pull quotes use Literata italic; Hedvig has no italic. */
+blockquote {
+  font-family: var(--font-serif);
+  font-size: var(--text-2xl);
+  line-height: var(--leading-snug);
+  font-style: italic;
+  font-weight: var(--weight-regular);
+  color: var(--fg-1);
+  border-left: 2px solid var(--primary);
+  padding-left: var(--space-6);
+  margin: var(--space-8) 0;
+  text-wrap: balance;
+}
+
+code, kbd, samp {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: var(--ink-100);
+  padding: 0.12em 0.36em;
+  border-radius: var(--radius-xs);
+}
+
+hr { border: 0; border-top: 1px solid var(--border); margin: var(--space-12) 0; }
+
+small, .caption { font-size: var(--text-xs); color: var(--fg-3); }

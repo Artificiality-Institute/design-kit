@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en" data-palette="institute">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design kit preview</title>
+<link rel="stylesheet" href="../css/kit.css">
+<style>
+  body { margin: 0; padding: 48px 32px 96px; }
+  .wrap { max-width: 76rem; margin: 0 auto; }
+  header { display: flex; align-items: baseline; gap: 24px; flex-wrap: wrap; margin-bottom: 40px; }
+  header img { height: 28px; }
+  .picker { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+  .picker select { font: 500 13px var(--font-ui); padding: 6px 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--paper-pure); color: var(--fg-1); }
+  section { margin: 48px 0; }
+  section > h2 { font-size: var(--text-2xl); margin-bottom: 4px; }
+  section > p.note { color: var(--fg-3); font-size: var(--text-sm); margin-bottom: 20px; }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+  .sw { border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; background: var(--paper-pure); }
+  .sw .chip { height: 64px; }
+  .sw .meta { padding: 8px 10px; }
+  .sw .name { font: 500 11px var(--font-mono); color: var(--fg-1); }
+  .sw .hex { font: 10px var(--font-mono); color: var(--fg-3); margin-top: 2px; text-transform: uppercase; }
+  .ramp { display: flex; height: 44px; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border); margin-bottom: 8px; }
+  .ramp div { flex: 1; }
+  .ramps { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .type-row { display: grid; grid-template-columns: 180px 1fr; gap: 24px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .moods { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .mood { aspect-ratio: 4 / 5; padding: 22px; display: flex; flex-direction: column; border-radius: var(--radius-md); border: 1px solid var(--border); }
+  .mood .label { color: var(--fg-3); }
+  .mood .big { font-family: var(--font-display); font-size: 40px; line-height: 1.05; letter-spacing: -0.02em; margin-top: auto; }
+  .mood .src { font: 10px var(--font-mono); color: var(--fg-3); margin-top: 12px; letter-spacing: 0.04em; }
+  .chart { border: 1px solid var(--border); border-radius: var(--radius-md); padding: 18px; background: var(--paper-pure); }
+  .chart h3 { font-size: var(--text-xl); margin-bottom: 2px; }
+  .chart .sub { color: var(--fg-3); font-size: var(--text-sm); font-style: italic; margin-bottom: 14px; }
+  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  svg text { font-family: var(--font-mono); font-size: 11px; fill: var(--chart-label); }
+  @media (max-width: 760px) { .ramps, .charts { grid-template-columns: 1fr; } .moods { grid-template-columns: 1fr 1fr; } .type-row { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="../assets/logo-wordmark-blue.png" alt="Artificiality Institute">
+    <span class="label">Design kit · preview</span>
+    <div class="picker">
+      <label class="label" for="pal">Palette</label>
+      <select id="pal"><option value="institute">institute</option></select>
+    </div>
+  </header>
+
+  <h1>An intellectual Apple.</h1>
+  <p class="lede">Warm, earthy, editorial. Ink on paper, not text on screen. This page shows every token the kit defines, under whichever palette is selected above. Everything on it names slots and roles, nothing names a hex, so a new palette should re-color the whole page without an edit here.</p>
+
+  <section>
+    <h2>Palette slots</h2>
+    <p class="note">What components use. These change with the palette.</p>
+    <div class="swatches" id="slots"></div>
+  </section>
+
+  <section>
+    <h2>Chart ramps</h2>
+    <p class="note">Categorical series in order; highlight against muted; sequential; diverging.</p>
+    <div class="ramps">
+      <div><div class="label">series 1–8</div><div class="ramp" id="series"></div></div>
+      <div><div class="label">highlight · highlight-2 · muted-strong · muted</div><div class="ramp" id="hl"></div></div>
+      <div><div class="label">sequential 1–7</div><div class="ramp" id="seq"></div></div>
+      <div><div class="label">diverging 1–7</div><div class="ramp" id="div"></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Two recipes</h2>
+    <p class="note">Hand-drawn SVG, filled with <code>var(--series-n)</code> and <code>var(--highlight)</code>: the way chart components will reference color.</p>
+    <div class="charts">
+      <div class="chart">
+        <h3>Oregon fell further than its peers</h3>
+        <div class="sub">Ranked bar with one highlight · illustrative values</div>
+        <svg viewBox="0 0 420 190" width="100%">
+          <g id="bars"></g>
+        </svg>
+      </div>
+      <div class="chart">
+        <h3>Adoption by sector, 2023–2026</h3>
+        <div class="sub">Line with end labels · illustrative values</div>
+        <svg viewBox="0 0 420 190" width="100%">
+          <g id="lines"></g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Slide moods</h2>
+    <p class="note">Full-bleed surfaces for social frames and decks, at 4:5. Set <code>data-mood</code> on the slide; text roles follow.</p>
+    <div class="moods">
+      <div class="mood" data-mood="paper"><div class="label">paper</div><div class="big">23% of Oregon firms use AI.</div><div class="src">Source: Census BTOS · artificialityinstitute.org · CC BY 4.0</div></div>
+      <div class="mood" data-mood="ink"><div class="label">ink</div><div class="big">23% of Oregon firms use AI.</div><div class="src">Source: Census BTOS · artificialityinstitute.org · CC BY 4.0</div></div>
+      <div class="mood" data-mood="primary"><div class="label">primary</div><div class="big">23% of Oregon firms use AI.</div><div class="src">Source: Census BTOS · artificialityinstitute.org · CC BY 4.0</div></div>
+      <div class="mood" data-mood="warm"><div class="label">warm</div><div class="big">23% of Oregon firms use AI.</div><div class="src">Source: Census BTOS · artificialityinstitute.org · CC BY 4.0</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Type</h2>
+    <p class="note">Four families, strict roles. Hedvig is never bold or italic.</p>
+    <div class="type-row"><div class="label">h1 · display</div><div style="font-family:var(--font-display);font-size:var(--text-5xl);line-height:var(--leading-tight);letter-spacing:var(--tracking-tighter)">Learning is the spine</div></div>
+    <div class="type-row"><div class="label">h2</div><h2 style="margin:0">Where Oregon stands</h2></div>
+    <div class="type-row"><div class="label">h3</div><h3>Adoption, investment, policy</h3></div>
+    <div class="type-row"><div class="label">lede · Literata italic</div><div class="lede" style="margin:0">A short italic opening that sets the argument before the evidence arrives.</div></div>
+    <div class="type-row"><div class="label">body · Literata 17px</div><p style="margin:0;max-width:44rem">Body text reads as ink on paper: warm near-black on cream, relaxed leading, old-style numerals where the type supports them. A <a href="#">link</a> is the lead color with a soft underline.</p></div>
+    <div class="type-row"><div class="label">ui · Inter</div><div style="font-family:var(--font-ui);font-size:14px">Dense interface text, forms, buttons, small tables.</div></div>
+    <div class="type-row"><div class="label">mono · JetBrains</div><div style="font-family:var(--font-mono);font-size:14px">1,234.5 · 41.0% · US41 · 2026-11-04</div></div>
+    <div class="type-row"><div class="label">micro-label</div><div class="label">Companies scored</div></div>
+    <div class="type-row"><div class="label">blockquote</div><blockquote style="margin:0">The frame is the whole AI economy of the state.</blockquote></div>
+  </section>
+
+  <section>
+    <h2>Named colors and neutrals</h2>
+    <p class="note">Constants. These do not change with the palette.</p>
+    <div class="swatches" id="named"></div>
+  </section>
+</div>
+
+<script>
+  const SLOTS = ['primary','primary-deep','primary-soft','primary-tint','on-primary','accent-warm','accent-warm-deep','on-accent-warm','accent-second','on-accent-second','accent-calm','on-accent-calm','accent-rare','on-accent-rare','accent-fill','positive','caution','negative'];
+  const NAMED = ['paper','paper-soft','paper-warm','paper-pure','ink-1000','ink-900','ink-700','ink-500','ink-400','ink-300','ink-200','ink-100','brand-blue','brand-blue-deep','brand-blue-soft','brand-blue-tint','clay','clay-deep','ochre','moss','plum','sand'];
+  const hex = (name, el = document.documentElement) => {
+    const probe = document.createElement('div'); probe.style.color = `var(--${name})`; el.appendChild(probe);
+    const rgb = getComputedStyle(probe).color; probe.remove();
+    const m = rgb.match(/\d+/g); return m ? '#' + m.slice(0,3).map(n => (+n).toString(16).padStart(2,'0')).join('') : rgb;
+  };
+  const swatch = (name) => `<div class="sw"><div class="chip" style="background:var(--${name})"></div><div class="meta"><div class="name">--${name}</div><div class="hex">${hex(name)}</div></div></div>`;
+  const ramp = (names) => names.map(n => `<div style="background:var(--${n})" title="--${n}"></div>`).join('');
+  const seqn = (p, n) => Array.from({length:n}, (_, i) => `${p}-${i+1}`);
+  function draw() {
+    document.getElementById('slots').innerHTML = SLOTS.map(swatch).join('');
+    document.getElementById('named').innerHTML = NAMED.map(swatch).join('');
+    document.getElementById('series').innerHTML = ramp(seqn('series', 8));
+    document.getElementById('hl').innerHTML = ramp(['highlight','highlight-2','muted-strong','muted']);
+    document.getElementById('seq').innerHTML = ramp(seqn('seq', 7));
+    document.getElementById('div').innerHTML = ramp(seqn('div', 7));
+    const bars = [['Washington',62],['California',58],['Idaho',44],['Oregon',31],['Nevada',27]];
+    document.getElementById('bars').innerHTML = bars.map(([n,v],i) => {
+      const y = 12 + i*34, w = v*4.5, hl = n === 'Oregon';
+      return `<text x="0" y="${y+15}" fill="${hl ? 'var(--fg-1)' : 'var(--chart-label)'}">${n}</text><rect x="100" y="${y}" width="${w}" height="22" rx="2" fill="${hl ? 'var(--highlight)' : 'var(--muted)'}"/><text x="${106+w}" y="${y+15}" fill="${hl ? 'var(--highlight)' : 'var(--chart-label)'}">${v}</text>`;
+    }).join('');
+    const series = [['Finance',[20,34,52,70]],['Tech',[40,58,66,80]],['Health',[10,18,30,41]],['Retail',[8,12,20,26]],['Farming',[4,6,9,15]]];
+    const x = (i) => 20 + i*110, y = (v) => 170 - v*1.8;
+    document.getElementById('lines').innerHTML =
+      [0,1,2,3].map(i => `<line x1="${x(i)}" x2="${x(i)}" y1="10" y2="170" stroke="var(--chart-grid)"/><text x="${x(i)}" y="186" text-anchor="middle">${2023+i}</text>`).join('') +
+      series.map(([n,vs],k) => `<polyline fill="none" stroke="var(--series-${k+1})" stroke-width="2.5" stroke-linejoin="round" points="${vs.map((v,i)=>`${x(i)},${y(v)}`).join(' ')}"/><text x="${x(3)+6}" y="${y(vs[3])+4}" fill="var(--series-${k+1})" font-weight="500">${n}</text>`).join('');
+  }
+  document.getElementById('pal').addEventListener('change', (e) => { document.documentElement.dataset.palette = e.target.value; draw(); });
+  draw();
+</script>
+</body>
+</html>

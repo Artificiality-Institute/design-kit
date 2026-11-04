@@ -1,0 +1,94 @@
+/* =========================================================================
+   Artificiality Institute design kit — Tailwind v4 theme
+   Import this from a SvelteKit app's src/app.css, after tailwindcss and the
+   kit (see README). `@theme inline` makes every utility resolve to the CSS
+   variable at use time, so bg-primary, text-series-3 and the rest follow
+   whatever data-palette is active, and no hex is repeated here.
+
+   Named colors (bg-clay, text-brand) are constants: use them when you mean
+   that exact hue. Slots (bg-primary, text-accent-warm) follow the palette:
+   use them for anything that should re-theme.
+   ========================================================================= */
+
+@theme inline {
+	--font-display: var(--font-display);
+	--font-serif: var(--font-serif);
+	--font-ui: var(--font-ui);
+	--font-mono: var(--font-mono);
+
+	/* neutrals */
+	--color-paper: var(--paper);
+	--color-paper-soft: var(--paper-soft);
+	--color-paper-warm: var(--paper-warm);
+	--color-paper-pure: var(--paper-pure);
+	--color-ink-1000: var(--ink-1000);
+	--color-ink-900: var(--ink-900);
+	--color-ink-700: var(--ink-700);
+	--color-ink-500: var(--ink-500);
+	--color-ink-400: var(--ink-400);
+	--color-ink-300: var(--ink-300);
+	--color-ink-200: var(--ink-200);
+	--color-ink-100: var(--ink-100);
+
+	/* named colors (constants) */
+	--color-brand: var(--brand-blue);
+	--color-brand-deep: var(--brand-blue-deep);
+	--color-brand-soft: var(--brand-blue-soft);
+	--color-brand-tint: var(--brand-blue-tint);
+	--color-clay: var(--clay);
+	--color-clay-deep: var(--clay-deep);
+	--color-ochre: var(--ochre);
+	--color-moss: var(--moss);
+	--color-plum: var(--plum);
+	--color-sand: var(--sand);
+
+	/* palette slots (follow data-palette) */
+	--color-primary: var(--primary);
+	--color-primary-deep: var(--primary-deep);
+	--color-primary-soft: var(--primary-soft);
+	--color-primary-tint: var(--primary-tint);
+	--color-on-primary: var(--on-primary);
+	--color-accent-warm: var(--accent-warm);
+	--color-accent-warm-deep: var(--accent-warm-deep);
+	--color-on-accent-warm: var(--on-accent-warm);
+	--color-accent-second: var(--accent-second);
+	--color-accent-calm: var(--accent-calm);
+	--color-accent-rare: var(--accent-rare);
+	--color-accent-fill: var(--accent-fill);
+	--color-positive: var(--positive);
+	--color-caution: var(--caution);
+	--color-negative: var(--negative);
+	--color-highlight: var(--highlight);
+	--color-highlight-2: var(--highlight-2);
+	--color-muted: var(--muted);
+	--color-muted-strong: var(--muted-strong);
+	--color-series-1: var(--series-1);
+	--color-series-2: var(--series-2);
+	--color-series-3: var(--series-3);
+	--color-series-4: var(--series-4);
+	--color-series-5: var(--series-5);
+	--color-series-6: var(--series-6);
+	--color-series-7: var(--series-7);
+	--color-series-8: var(--series-8);
+
+	/* semantic roles */
+	--color-fg-1: var(--fg-1);
+	--color-fg-2: var(--fg-2);
+	--color-fg-3: var(--fg-3);
+	--color-fg-muted: var(--fg-muted);
+	--color-bg: var(--bg);
+	--color-bg-elevated: var(--bg-elevated);
+	--color-bg-warm: var(--bg-warm);
+	--color-bg-inverse: var(--bg-inverse);
+	--color-border: var(--border);
+	--color-border-strong: var(--border-strong);
+	--color-link: var(--link);
+
+	--radius-card: var(--radius-md);
+	--shadow-hairline: var(--shadow-hairline);
+	--shadow-xs: var(--shadow-xs);
+	--shadow-sm: var(--shadow-sm);
+	--shadow-md: var(--shadow-md);
+	--shadow-lg: var(--shadow-lg);
+	--shadow-xl: var(--shadow-xl);
+}

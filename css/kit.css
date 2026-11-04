@@ -1,0 +1,8 @@
+/* Artificiality Institute design kit: the whole thing, in layer order.
+   Plain CSS, no build step. Import this one file, or the layers you need.
+   Palettes: institute.css is always loaded and is the default. Load any other
+   palette file after it and select it with data-palette on an element. */
+@import "./foundations.css";
+@import "./colors.css";
+@import "./palettes/institute.css";
+@import "./semantic.css";

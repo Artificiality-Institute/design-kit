@@ -1,0 +1,165 @@
+/* =========================================================================
+   Artificiality Institute design kit — Layer 1: foundations
+   Things that never vary between palettes: fonts, the warm neutrals (ink and
+   paper), the type scale, spacing, radii, shadows, motion, layout, and the
+   base element styles.
+
+   Tone: warm, earthy, intellectual. Ink on paper, not text on screen.
+   Never pure black, cold grays, or blue-tinted shadows.
+   ========================================================================= */
+
+/* ---------- Webfonts (all self-hosted; OFL texts live in fonts/) ---------- */
+/* Projects copy fonts/ to static/fonts/ (bin/install-assets.mjs does it), so
+   these /fonts/ paths resolve on the web, in headless rendering and offline. */
+
+@font-face { font-family: "Hedvig Letters Serif"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("/fonts/HedvigLettersSerif_18pt-Regular.ttf") format("truetype"); }
+@font-face { font-family: "Hedvig Letters Serif 14pt"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("/fonts/HedvigLettersSerif_14pt-Regular.ttf") format("truetype"); }
+
+@font-face { font-family: "Literata"; font-style: normal; font-weight: 300; font-display: swap;
+  src: url("/fonts/Literata_18pt-Light.ttf") format("truetype"); }
+@font-face { font-family: "Literata"; font-style: italic; font-weight: 300; font-display: swap;
+  src: url("/fonts/Literata_18pt-LightItalic.ttf") format("truetype"); }
+@font-face { font-family: "Literata"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("/fonts/Literata_18pt-Regular.ttf") format("truetype"); }
+/* No upright-italic 400 shipped; italic body maps to the Light italic cut. */
+@font-face { font-family: "Literata"; font-style: italic; font-weight: 400; font-display: swap;
+  src: url("/fonts/Literata_18pt-LightItalic.ttf") format("truetype"); }
+@font-face { font-family: "Literata"; font-style: normal; font-weight: 600; font-display: swap;
+  src: url("/fonts/Literata_18pt-SemiBold.ttf") format("truetype"); }
+@font-face { font-family: "Literata"; font-style: normal; font-weight: 700; font-display: swap;
+  src: url("/fonts/Literata_18pt-Bold.ttf") format("truetype"); }
+
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 100 900; font-display: swap;
+  src: url("/fonts/Inter[opsz,wght].ttf") format("truetype"); }
+@font-face { font-family: "Inter"; font-style: italic; font-weight: 100 900; font-display: swap;
+  src: url("/fonts/Inter-Italic[opsz,wght].ttf") format("truetype"); }
+@font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 100 800; font-display: swap;
+  src: url("/fonts/JetBrainsMono[wght].ttf") format("truetype"); }
+@font-face { font-family: "JetBrains Mono"; font-style: italic; font-weight: 100 800; font-display: swap;
+  src: url("/fonts/JetBrainsMono-Italic[wght].ttf") format("truetype"); }
+
+:root {
+  /* ============================ NEUTRALS ============================ */
+
+  /* — Ink (warm-leaning) ——————————————————————————————————————————— */
+  --ink-1000:          #1A1A18;   /* deepest text — almost black */
+  --ink-900:           #232323;   /* primary text (sampled from the icon) */
+  --ink-700:           #3D3D3A;   /* strong secondary */
+  --ink-500:           #6B6B66;   /* muted body */
+  --ink-400:           #8E8E87;   /* placeholder / caption */
+  --ink-300:           #B8B6AE;   /* hairline-strong */
+  --ink-200:           #D9D6CC;   /* hairline / divider */
+  --ink-100:           #ECE9DF;   /* subtle fill */
+
+  /* — Paper (warm creams) ———————————————————————————————————————————— */
+  --paper:             #FAF8F2;   /* canonical canvas (sampled from the icon counter) */
+  --paper-soft:        #F4F1E8;   /* one shade darker: cards on paper */
+  --paper-warm:        #F0EBDC;   /* warmer wash: footers, quotes */
+  --paper-pure:        #FFFFFF;   /* true white, sparingly */
+
+  /* ============================ TYPE ============================ */
+
+  --font-display:      "Hedvig Letters Serif", "Cooper Md BT", Georgia, serif;
+  --font-serif:        "Literata", "Charter", "Iowan Old Style", Georgia, serif;
+  --font-ui:           "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-mono:         "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Type scale (modular, ~1.2 ratio scaled for editorial use) */
+  --text-2xs:          0.75rem;     /* 12px — fine print, captions */
+  --text-xs:           0.8125rem;   /* 13px — meta, eyebrow */
+  --text-sm:           0.9375rem;   /* 15px — small body */
+  --text-base:         1.0625rem;   /* 17px — body (literary) */
+  --text-lg:           1.1875rem;   /* 19px — emphasized body */
+  --text-xl:           1.375rem;    /* 22px — lead / large body */
+  --text-2xl:          1.75rem;     /* 28px — h4 / sub-section */
+  --text-3xl:          2.25rem;     /* 36px — h3 */
+  --text-4xl:          3rem;        /* 48px — h2 */
+  --text-5xl:          4rem;        /* 64px — h1 */
+  --text-6xl:          5.5rem;      /* 88px — display */
+  --text-7xl:          7.5rem;      /* 120px — hero display */
+
+  --leading-tight:     1.05;        /* display headings */
+  --leading-snug:      1.18;        /* h2/h3 */
+  --leading-normal:    1.35;        /* h4, leads */
+  --leading-relaxed:   1.55;        /* body */
+  --leading-loose:     1.7;         /* long-form reading */
+
+  --tracking-tightest: -0.04em;     /* hero display */
+  --tracking-tighter:  -0.025em;    /* h1/h2 */
+  --tracking-tight:    -0.012em;    /* h3/h4 */
+  --tracking-normal:   0;
+  --tracking-wide:     0.04em;      /* eyebrow, small caps */
+  --tracking-label:    0.12em;      /* mono micro-labels */
+  --tracking-widest:   0.18em;      /* uppercase labels */
+
+  --weight-regular:    400;
+  --weight-medium:     500;
+  --weight-semibold:   600;
+  --weight-bold:       700;
+
+  /* ============================ SPACING ============================ */
+  --space-0:    0;
+  --space-px:   1px;
+  --space-0_5:  2px;
+  --space-1:    4px;
+  --space-2:    8px;
+  --space-3:    12px;
+  --space-4:    16px;
+  --space-5:    20px;
+  --space-6:    24px;
+  --space-8:    32px;
+  --space-10:   40px;
+  --space-12:   48px;
+  --space-16:   64px;
+  --space-20:   80px;
+  --space-24:   96px;
+  --space-32:   128px;
+  --space-40:   160px;
+  --space-48:   192px;
+  --space-64:   256px;
+
+  /* ============================ RADII ============================ */
+  --radius-none:   0;
+  --radius-xs:     2px;
+  --radius-sm:     4px;
+  --radius-md:     8px;     /* default for inputs, small cards (Tailwind: rounded-card) */
+  --radius-lg:     14px;    /* cards */
+  --radius-xl:     22px;    /* large surfaces */
+  --radius-2xl:    32px;
+  --radius-pill:   999px;
+  --radius-circle: 50%;
+
+  /* ============================ SHADOWS ============================ */
+  /* Warm and quiet, never blue; they tint toward ink/sepia. */
+  --shadow-hairline:   0 0 0 1px var(--ink-200);
+  --shadow-xs:         0 1px 2px rgba(35,35,35,0.04);
+  --shadow-sm:         0 1px 3px rgba(35,35,35,0.05), 0 1px 2px rgba(35,35,35,0.04);
+  --shadow-md:         0 4px 8px -2px rgba(35,35,35,0.06), 0 2px 4px -2px rgba(35,35,35,0.04);
+  --shadow-lg:         0 12px 24px -8px rgba(35,35,35,0.10), 0 4px 8px -4px rgba(35,35,35,0.06);
+  --shadow-xl:         0 24px 48px -12px rgba(35,35,35,0.14), 0 8px 16px -8px rgba(35,35,35,0.06);
+  --shadow-inset:      inset 0 1px 0 0 rgba(255,255,255,0.5), inset 0 0 0 1px rgba(35,35,35,0.04);
+
+  /* ============================ MOTION ============================ */
+  --ease-out:          cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in-out:       cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-soft:         cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast:     120ms;
+  --duration-base:     200ms;
+  --duration-slow:     360ms;
+  --duration-slower:   600ms;
+
+  /* ============================ LAYOUT ============================ */
+  --measure-narrow:    36rem;       /* 576px — long-form prose */
+  --measure-base:      44rem;       /* 704px — essays */
+  --measure-wide:      62rem;       /* 992px — wide layouts */
+  --container:         76rem;       /* 1216px — page max */
+
+  /* ============================ CHART NEUTRALS ============================ */
+  /* Chart furniture is neutral in every palette; only the data colors change. */
+  --chart-grid:        color-mix(in oklab, var(--ink-900) 9%, transparent);
+  --chart-axis:        var(--ink-300);
+  --chart-label:       var(--ink-500);
+  --chart-annotation:  var(--ink-700);
+}

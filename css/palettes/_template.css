@@ -1,0 +1,53 @@
+/* =========================================================================
+   Palette template. Copy to <name>.css and fill every slot.
+   scripts/check-palettes.mjs fails if a slot is missing.
+
+   Rules:
+   - Slot names are fixed; components and chart recipes only ever name slots.
+   - A palette file never edits another. Summit 2028 will be a new file beside
+     summit-2027.css, so posts made under 2027 keep rendering as they did.
+   - New hues get a name in css/colors.css first; the palette references them.
+   - Variants you don't have hexes for can be derived, e.g.
+       --primary-tint: color-mix(in oklab, var(--primary) 15%, var(--paper));
+       --primary-deep: color-mix(in oklab, var(--primary) 80%, var(--ink-1000));
+   - Check contrast: on-* colors should reach 4.5:1 against their surface for
+     body text, or 3:1 if the surface only ever carries display-size text
+     (say which in a comment, as institute.css does).
+   - Sequential and diverging ramps: 7 steps, interpolated in OKLab.
+   ========================================================================= */
+
+[data-palette="NAME"] {
+  --palette-name: "NAME";
+
+  --primary:           ;
+  --primary-deep:      ;
+  --primary-soft:      ;
+  --primary-tint:      ;
+  --on-primary:        ;
+
+  --accent-warm:       ;
+  --accent-warm-deep:  ;
+  --on-accent-warm:    ;
+  --accent-second:     ;
+  --on-accent-second:  ;
+  --accent-calm:       ;
+  --on-accent-calm:    ;
+  --accent-rare:       ;
+  --on-accent-rare:    ;
+  --accent-fill:       ;
+
+  --positive:          ;
+  --caution:           ;
+  --negative:          ;
+
+  --series-1: ; --series-2: ; --series-3: ; --series-4: ;
+  --series-5: ; --series-6: ; --series-7: ; --series-8: ;
+
+  --highlight:         ;
+  --highlight-2:       ;
+  --muted:             ;
+  --muted-strong:      ;
+
+  --seq-1: ; --seq-2: ; --seq-3: ; --seq-4: ; --seq-5: ; --seq-6: ; --seq-7: ;
+  --div-1: ; --div-2: ; --div-3: ; --div-4: ; --div-5: ; --div-6: ; --div-7: ;
+}

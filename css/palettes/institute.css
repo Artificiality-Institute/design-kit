@@ -1,0 +1,68 @@
+/* =========================================================================
+   Palette: institute (the default)
+   Fills every slot in css/palettes/_template.css from the Institute's core
+   named colors. Active on :root unless an ancestor sets data-palette.
+   ========================================================================= */
+
+:root,
+[data-palette="institute"] {
+  --palette-name: "institute";
+
+  /* — Lead color and its variants ———————————————————————————————————— */
+  --primary:           var(--brand-blue);
+  --primary-deep:      var(--brand-blue-deep);
+  --primary-soft:      var(--brand-blue-soft);
+  --primary-tint:      var(--brand-blue-tint);
+  --on-primary:        var(--paper);          /* 9.9:1 on primary */
+
+  /* — Accents —————————————————————————————————————————————————————————— */
+  --accent-warm:       var(--clay);           /* highlights, call-outs */
+  --accent-warm-deep:  var(--clay-deep);      /* body text on paper: 5.5:1 */
+  --on-accent-warm:    var(--paper);          /* display sizes only (3.7:1) */
+  --accent-second:     var(--ochre);
+  --on-accent-second:  var(--ink-1000);       /* 7.8:1 */
+  --accent-calm:       var(--moss);
+  --on-accent-calm:    var(--paper);          /* 4.4:1: large text */
+  --accent-rare:       var(--plum);
+  --on-accent-rare:    var(--paper);          /* 8.3:1 */
+  --accent-fill:       var(--sand);           /* subdued fills */
+
+  /* — Status —————————————————————————————————————————————————————————— */
+  --positive:          var(--moss);
+  --caution:           var(--ochre);
+  --negative:          var(--clay-deep);
+
+  /* — Chart: categorical series (use in order; 7 and 8 are the "rest") — */
+  --series-1:          var(--brand-blue);
+  --series-2:          var(--clay);
+  --series-3:          var(--ochre);
+  --series-4:          var(--moss);
+  --series-5:          var(--plum);
+  --series-6:          var(--brand-blue-soft);
+  --series-7:          var(--ink-500);
+  --series-8:          var(--ink-300);
+
+  /* — Chart: the one-versus-many pattern (Oregon against the rest) ———— */
+  --highlight:         var(--brand-blue);
+  --highlight-2:       var(--clay);
+  --muted:             var(--ink-300);
+  --muted-strong:      var(--ink-400);
+
+  /* — Chart: sequential, light to dark (OKLab steps, tint → deep) ————— */
+  --seq-1:             #E4ECF1;
+  --seq-2:             #BCC9D2;
+  --seq-3:             #95A8B4;
+  --seq-4:             #708897;
+  --seq-5:             #4C687B;
+  --seq-6:             #2A4A60;
+  --seq-7:             #032E45;
+
+  /* — Chart: diverging, warm → neutral → lead (OKLab steps) ——————————— */
+  --div-1:             #A04E2C;
+  --div-2:             #BB8065;
+  --div-3:             #D4B29E;
+  --div-4:             #EAE5D8;
+  --div-5:             #9EADB1;
+  --div-6:             #56778B;
+  --div-7:             #054364;
+}
