@@ -19,7 +19,7 @@ This project uses the Artificiality Institute design kit so everything we make l
 ```bash
 npx sv create my-app      # SvelteKit minimal · TypeScript · add-ons: tailwindcss, prettier
 cd my-app && npm install
-npm install github:Artificiality-Institute/design-kit#v1.0.0
+npm install github:Artificiality-Institute/design-kit#v1.1.0
 npx design-kit-install static
 ```
 
@@ -61,7 +61,7 @@ Slots a palette provides:
 | Chart, one-vs-many | `highlight`, `highlight-2`, `muted`, `muted-strong` |
 | Chart, ramps | `seq-1` … `seq-7` (light to dark), `div-1` … `div-7` (warm, neutral, lead) |
 
-Chart furniture (`--chart-grid`, `--chart-axis`, `--chart-label`, `--chart-annotation`) is neutral and lives in foundations.
+**Charts name chart roles, not slots.** `css/charts.css` maps the slots to what a chart needs: `--chart-emphasis` (the one series the chart is about), `--chart-secondary`, `--chart-context`, `--chart-context-strong`, `--chart-grid`, `--chart-zero`, `--chart-text`, `--chart-text-muted`, the four `--chart-font-*` roles and the line weights. The chart style guide, `docs/charts.md`, says how to use them: read it before drawing or changing any chart. Charts are drawn by the recipes in the Institute's `present` package; do not write a new chart component in a project when a recipe exists, and never give a chart its own colours.
 
 ### Palette: institute (default)
 

@@ -62,6 +62,14 @@
 	--color-highlight-2: var(--highlight-2);
 	--color-muted: var(--muted);
 	--color-muted-strong: var(--muted-strong);
+	/* chart roles (css/charts.css): fill-chart-emphasis, text-chart-text-muted, stroke-chart-grid … */
+	--color-chart-emphasis: var(--chart-emphasis);
+	--color-chart-secondary: var(--chart-secondary);
+	--color-chart-context: var(--chart-context);
+	--color-chart-context-strong: var(--chart-context-strong);
+	--color-chart-grid: var(--chart-grid);
+	--color-chart-text: var(--chart-text);
+	--color-chart-text-muted: var(--chart-text-muted);
 	--color-series-1: var(--series-1);
 	--color-series-2: var(--series-2);
 	--color-series-3: var(--series-3);

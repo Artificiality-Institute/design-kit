@@ -64,6 +64,7 @@
     <div class="ramps">
       <div><div class="label">series 1–8</div><div class="ramp" id="series"></div></div>
       <div><div class="label">highlight · highlight-2 · muted-strong · muted</div><div class="ramp" id="hl"></div></div>
+      <div><div class="label">chart roles: emphasis · secondary · context-strong · context · context-faint · grid</div><div class="ramp" id="roles"></div></div>
       <div><div class="label">sequential 1–7</div><div class="ramp" id="seq"></div></div>
       <div><div class="label">diverging 1–7</div><div class="ramp" id="div"></div></div>
     </div>
@@ -138,12 +139,13 @@
     document.getElementById('named').innerHTML = NAMED.map(swatch).join('');
     document.getElementById('series').innerHTML = ramp(seqn('series', 8));
     document.getElementById('hl').innerHTML = ramp(['highlight','highlight-2','muted-strong','muted']);
+    document.getElementById('roles').innerHTML = ramp(['chart-emphasis','chart-secondary','chart-context-strong','chart-context','chart-context-faint','chart-grid']);
     document.getElementById('seq').innerHTML = ramp(seqn('seq', 7));
     document.getElementById('div').innerHTML = ramp(seqn('div', 7));
     const bars = [['Washington',62],['California',58],['Idaho',44],['Oregon',31],['Nevada',27]];
     document.getElementById('bars').innerHTML = bars.map(([n,v],i) => {
       const y = 12 + i*34, w = v*4.5, hl = n === 'Oregon';
-      return `<text x="0" y="${y+15}" fill="${hl ? 'var(--fg-1)' : 'var(--chart-label)'}">${n}</text><rect x="100" y="${y}" width="${w}" height="22" rx="2" fill="${hl ? 'var(--highlight)' : 'var(--muted)'}"/><text x="${106+w}" y="${y+15}" fill="${hl ? 'var(--highlight)' : 'var(--chart-label)'}">${v}</text>`;
+      return `<text x="0" y="${y+15}" fill="${hl ? 'var(--fg-1)' : 'var(--chart-label)'}">${n}</text><rect x="100" y="${y}" width="${w}" height="22" fill="${hl ? 'var(--chart-emphasis)' : 'var(--chart-context)'}"/><text x="${106+w}" y="${y+15}" fill="${hl ? 'var(--chart-emphasis)' : 'var(--chart-label)'}">${v}</text>`;
     }).join('');
     const series = [['Finance',[20,34,52,70]],['Tech',[40,58,66,80]],['Health',[10,18,30,41]],['Retail',[8,12,20,26]],['Farming',[4,6,9,15]]];
     const x = (i) => 20 + i*110, y = (v) => 170 - v*1.8;

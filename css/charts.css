@@ -1,0 +1,66 @@
+/* =========================================================================
+   Artificiality Institute design kit — Layer 5: chart roles
+   The chart look, named by role and not by hue. Chart recipes (in the
+   `present` package) reference these and nothing else, so every chart in
+   every project is drawn in one grammar, and a palette switch re-colors it.
+   How to use them: docs/charts.md.
+
+   Declared wherever a palette or a mood is set, as well as on the page, so a
+   chart inside a `data-palette` region or on a dark slide resolves its roles
+   from that region's slots.
+   ========================================================================= */
+
+:root,
+[data-palette],
+[data-mood] {
+  /* — What is drawn —————————————————————————————————————————————————— */
+  --chart-emphasis:        var(--highlight-2);      /* the one series the chart is about */
+  --chart-secondary:       var(--highlight);        /* a second subject, when the claim has two */
+  --chart-context:         var(--muted);            /* everything shown for comparison */
+  --chart-context-strong:  var(--muted-strong);     /* a named comparator the reader must find */
+  --chart-context-faint:   var(--ink-200);          /* the other panels' lines behind a small multiple */
+  --chart-positive:        var(--positive);         /* only where sign is the message */
+  --chart-negative:        var(--negative);
+  --chart-dot-fill:        var(--paper);            /* hollow markers and annotation points */
+  --chart-on-emphasis:     var(--on-accent-warm);   /* a value printed inside an emphasis-coloured bar */
+  --chart-paper:           transparent;             /* a chart has no background of its own */
+
+  /* Stacked bar parts, strongest first; four is the ceiling. */
+  --chart-part-1:          var(--chart-emphasis);
+  --chart-part-2:          var(--chart-context-strong);
+  --chart-part-3:          var(--chart-context);
+  --chart-part-4:          var(--chart-context-faint);
+
+  /* — Furniture: neutral in every palette ———————————————————————————— */
+  --chart-grid:            var(--border);           /* hairline gridlines, the median marker */
+  --chart-zero:            var(--muted-strong);     /* the zero line, when zero is on the chart */
+  --chart-axis:            var(--ink-300);
+  --chart-label:           var(--ink-500);          /* a colour: axis and micro-label text */
+  --chart-annotation:      var(--ink-700);
+  --chart-text:            var(--fg-1);             /* headline, direct labels of emphasised series */
+  --chart-text-muted:      var(--fg-3);             /* subtitle, axis labels, source line */
+
+  /* — Type —————————————————————————————————————————————————————————— */
+  --chart-font-headline:   var(--font-display);     /* Hedvig: never bold, never italic */
+  --chart-font-subtitle:   var(--font-serif);
+  --chart-font-label:      var(--font-ui);
+  --chart-font-number:     var(--font-mono);
+
+  /* — Weights: these do not change with the frame ———————————————————— */
+  --chart-line:            1.75px;                  /* the emphasised series */
+  --chart-line-context:    1.25px;
+  --chart-grid-width:      0.5px;
+  --chart-bar-gap:         3px;
+  --chart-point:           2.5px;
+}
+
+/* Type scales with the frame a chart is drawn for (docs/charts.md, "Size and
+   frames"). The page frame is the default; a chart frame element carries the
+   class of its frame. */
+:root {
+  --chart-headline:        20px;
+  --chart-subtitle:        13px;
+}
+.chart-frame-social { --chart-headline: 30px; --chart-subtitle: 18px; }
+.chart-frame-slide  { --chart-headline: 44px; --chart-subtitle: 24px; }
+.chart-frame-print  { --chart-headline: 14pt; --chart-subtitle: 9.5pt; }

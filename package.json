@@ -1,10 +1,10 @@
 {
   "name": "@artificiality/design-kit",
-  "version": "1.0.0",
-  "description": "Artificiality Institute design kit: foundations, named colors, palettes with chart ramps, semantic roles, Tailwind theme, fonts and logos.",
+  "version": "1.1.0",
+  "description": "Artificiality Institute design kit: foundations, named colors, palettes with chart ramps, semantic roles, chart roles and the chart style guide, Tailwind theme, fonts and logos.",
   "license": "MIT",
   "type": "module",
-  "files": ["css", "fonts", "assets", "bin", "scripts", "README.md", "CLAUDE.md", "LICENSE"],
+  "files": ["css", "fonts", "assets", "bin", "scripts", "docs", "README.md", "CLAUDE.md", "LICENSE"],
   "exports": {
     ".": "./css/kit.css",
     "./css/*": "./css/*",

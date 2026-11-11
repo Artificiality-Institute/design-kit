@@ -155,11 +155,4 @@
   --measure-base:      44rem;       /* 704px — essays */
   --measure-wide:      62rem;       /* 992px — wide layouts */
   --container:         76rem;       /* 1216px — page max */
-
-  /* ============================ CHART NEUTRALS ============================ */
-  /* Chart furniture is neutral in every palette; only the data colors change. */
-  --chart-grid:        color-mix(in oklab, var(--ink-900) 9%, transparent);
-  --chart-axis:        var(--ink-300);
-  --chart-label:       var(--ink-500);
-  --chart-annotation:  var(--ink-700);
 }

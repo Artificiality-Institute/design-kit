@@ -8,14 +8,24 @@ Plain CSS with no build step. Preview: `npm run preview`, then open `http://loca
 
 | File | Layer | Changes when |
 |---|---|---|
-| `css/foundations.css` | Fonts, warm neutrals (ink, paper), type scale, spacing, radii, shadows, motion, layout, chart furniture | Rarely. These never vary by palette. |
+| `css/foundations.css` | Fonts, warm neutrals (ink, paper), type scale, spacing, radii, shadows, motion, layout | Rarely. These never vary by palette. |
 | `css/colors.css` | Named colors: every brand hue as a constant (`--brand-blue`, `--clay`, …) | A new palette brings new hues. Names are added, never changed. |
 | `css/palettes/<name>.css` | A palette: fills the fixed set of **slots** (`--primary`, `--accent-warm`, `--series-1…8`, `--seq-1…7`, …) from named colors | A new palette is a new file. `institute` is the default; `summit-2027` is next. |
 | `css/semantic.css` | Roles components use (`--fg-1`, `--bg`, `--link`, `--success`), slide moods, base element styles | Rarely. |
+| `css/charts.css` | Chart roles: what a chart's colours, type and line weights are called (`--chart-emphasis`, `--chart-context`, `--chart-grid`, …), pointing at palette slots. The chart style guide is `docs/charts.md` | When the chart grammar changes. Rarely. |
 | `css/tailwind.css` | Tailwind v4 `@theme inline` block mapping utilities to the variables | When a slot or named color is added. |
 | `css/kit.css` | Imports the layers in order | Never. |
 
 The rule that makes palettes swappable: **components and chart recipes name slots or roles, never hexes and never named colors**, unless they mean that exact hue (a logo, a one-off editorial flourish).
+
+## Charts
+
+The kit defines how a chart looks; it does not draw one. The look is two things:
+
+- `css/charts.css`: the chart roles. A recipe names `--chart-emphasis` for the series the chart is about, `--chart-context` for everything shown for comparison, `--chart-grid` for the hairlines, and so on. The values are palette slots, so a new palette re-colors every chart.
+- `docs/charts.md`: the chart style guide. One message per chart, the headline states it, one emphasis, direct labels, hairline gridlines, what form suits which message, and the size of each frame.
+
+The components that draw charts to this grammar are in the Institute's `present` package, which every project that shows a chart installs beside the kit. One look, defined here; one set of recipes, defined there.
 
 ## Switching palettes
 
@@ -30,7 +40,7 @@ Load `palettes/institute.css` (via `kit.css`) always; load any other palette aft
 ## Installing in a project
 
 ```bash
-npm install github:Artificiality-Institute/design-kit#v1.0.0
+npm install github:Artificiality-Institute/design-kit#v1.1.0
 npx design-kit-install static        # copies fonts/ and assets/ into static/
 ```
 
