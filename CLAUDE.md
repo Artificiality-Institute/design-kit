@@ -97,6 +97,10 @@ The signature micro-label, uppercase tracked-out mono (also the `.label` class):
 
 Body is 17px with 1.55 leading. Headings use tight leading and negative tracking (the base `h1–h4` styles handle it).
 
+## Long-form reading
+
+For a site that is mostly reading, `css/longform.css` (part of `kit.css`) gives titles that follow the screen and styles for running text. Put `.lf-title` on a piece's `h1`, `.lf-card-title` on a card's title, and wrap the body of an essay in `.longform`. The base heading styles are one size for every screen; these classes are how a reading page sizes them, so do not write heading sizes in a project.
+
 ## Component idioms
 
 **Stat card**: bordered card on paper, mono label, big Hedvig value.

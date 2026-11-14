@@ -1,0 +1,186 @@
+/* Long-form: sizes for titles, cards and running text on reading sites.
+ *
+ * The base styles in semantic.css set h1 to h4 at one size for every screen and say nothing about
+ * running text (lists, tables, headings inside an essay). This layer adds both, for sites that are
+ * mostly reading: the Journal first. Every value is a token or a role from the layers below.
+ *
+ * Titles and cards:  .lf-title  .lf-page-title  .lf-section-title  .lf-card-title  .lf-card-title-lg
+ * Small text:        .lf-lede  .lf-summary  .lf-meta  .lf-flush
+ * Links:             a.lf-quiet (looks like its surroundings until pointed at)  a.lf-button
+ * Running text:      .longform (wrap the body of a piece, a chapter or a guide)
+ */
+.lf-title {
+	font-size: clamp(var(--text-3xl), 6.5vw, var(--text-5xl));
+	line-height: var(--leading-tight);
+	text-wrap: balance;
+}
+.lf-page-title {
+	font-size: clamp(var(--text-3xl), 5vw, var(--text-4xl));
+}
+.lf-section-title {
+	font-size: var(--text-2xl);
+	line-height: var(--leading-snug);
+}
+.lf-card-title {
+	font-size: var(--text-xl);
+	line-height: var(--leading-snug);
+	letter-spacing: var(--tracking-tight);
+	text-wrap: balance;
+}
+.lf-card-title-lg {
+	font-size: clamp(var(--text-2xl), 4.5vw, var(--text-4xl));
+	line-height: var(--leading-snug);
+	text-wrap: balance;
+}
+.lf-lede {
+	font-family: var(--font-serif);
+	font-style: italic;
+	font-size: clamp(var(--text-lg), 2.4vw, var(--text-xl));
+	line-height: var(--leading-normal);
+	color: var(--fg-2);
+	margin: 0;
+	text-wrap: pretty;
+}
+.lf-summary {
+	font-size: var(--text-sm);
+	line-height: var(--leading-relaxed);
+	color: var(--fg-2);
+	margin: 0;
+}
+.lf-meta {
+	font-family: var(--font-mono);
+	font-size: 11px;
+	letter-spacing: 0.02em;
+	color: var(--fg-3);
+	margin: 0;
+}
+.lf-flush {
+	margin: 0;
+}
+
+/* A link that looks like its surroundings until it is pointed at: titles, cards, the menu. */
+a.lf-quiet {
+	color: inherit;
+	text-decoration: none;
+}
+a.lf-quiet:hover {
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 0.18em;
+}
+a.lf-button {
+	display: inline-flex;
+	align-items: center;
+	border-radius: var(--radius-pill);
+	background: var(--primary);
+	color: var(--on-primary);
+	font-family: var(--font-ui);
+	font-size: var(--text-sm);
+	font-weight: 500;
+	padding: 9px 18px;
+	text-decoration: none;
+	transition: background 160ms var(--ease-out);
+}
+a.lf-button:hover {
+	background: var(--primary-deep);
+	color: var(--on-primary);
+}
+
+/* Running text: the body of a piece, a chapter or a guide. */
+.longform {
+	font-size: var(--text-base);
+	line-height: var(--leading-loose);
+	color: var(--fg-1);
+	overflow-wrap: break-word;
+}
+@media (min-width: 48rem) {
+	.longform {
+		font-size: var(--text-lg);
+	}
+}
+.longform > * + * {
+	margin-top: 1.1em;
+}
+.longform p {
+	margin: 0;
+}
+.longform p + p,
+.longform ul + p,
+.longform ol + p,
+.longform p + ul,
+.longform p + ol {
+	margin-top: 1.1em;
+}
+.longform h2 {
+	font-size: var(--text-2xl);
+	line-height: var(--leading-snug);
+	margin: 2.2em 0 0.6em;
+}
+.longform h3 {
+	font-size: var(--text-xl);
+	line-height: var(--leading-normal);
+	margin: 1.9em 0 0.5em;
+}
+.longform h4 {
+	font-size: var(--text-lg);
+	line-height: var(--leading-normal);
+	margin: 1.6em 0 0.4em;
+}
+.longform h2:first-child,
+.longform h3:first-child {
+	margin-top: 0;
+}
+.longform ul {
+	list-style: disc;
+	padding-left: 1.3em;
+}
+.longform ol {
+	list-style: decimal;
+	padding-left: 1.5em;
+}
+.longform li {
+	margin: 0.4em 0;
+	padding-left: 0.2em;
+}
+.longform li > ul,
+.longform li > ol {
+	margin-top: 0.4em;
+}
+.longform strong {
+	font-weight: 600;
+}
+.longform hr {
+	margin: 2.4em auto;
+	width: 4rem;
+}
+.longform blockquote {
+	margin: 1.6em 0;
+}
+.longform table {
+	width: 100%;
+	border-collapse: collapse;
+	font-family: var(--font-ui);
+	font-size: var(--text-sm);
+	line-height: var(--leading-normal);
+}
+.longform th {
+	background: var(--paper-soft);
+	font-family: var(--font-mono);
+	font-size: 10px;
+	font-weight: 500;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	text-align: left;
+	color: var(--fg-3);
+	padding: 8px 10px;
+	border-bottom: 1px solid var(--border);
+}
+.longform td {
+	padding: 8px 10px;
+	border-bottom: 1px solid var(--border);
+	vertical-align: top;
+}
+.longform pre {
+	overflow-x: auto;
+	font-size: var(--text-sm);
+}
