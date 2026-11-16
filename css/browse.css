@@ -1,0 +1,66 @@
+/* The browse bar: one row of menus for narrowing and ordering a list (topic, place, kind, sort), with what is
+ * chosen shown in each menu's own button, and a count of what is shown. For any page that lists a growing
+ * collection: charts in the Commons, pieces in the Journal. One bar, so a reader who has learned it on one
+ * site knows it on the other. Every value is a token or role already in the kit.
+ *
+ * The pattern, and why:
+ *   - Menus, not rows of chips or tiles. A row of every topic pushes the list down the page and grows with
+ *     every topic added. A menu costs one line however many choices it holds, so what is new stays near the top.
+ *   - Every choice is an ordinary link (?topic=work&place=oregon), so a view can be shared and bookmarked, the
+ *     back button works, and the bar works with JavaScript off.
+ *   - What is chosen is always visible: the menu's button is filled and names it. One link clears every choice.
+ *   - The count of what is shown sits in the bar, so a person knows the choice did something.
+ *   - The bar stays at the top of the window while the list scrolls.
+ *
+ * The markup (CLAUDE.md, "The browse bar", has it whole):
+ *   nav.browse > div.browse-bar > details.browse-menu[name][data-chosen] > summary (span.browse-label + the choice)
+ *                                                                        + div.browse-panel > ul > li > a[aria-current]
+ *                               > a.browse-clear, span.browse-count, details.browse-menu.browse-sort
+ * Built on <details>, so a menu opens and closes without a script, and menus that share a `name` close one
+ * another. A few lines of script in the project close an open menu on a click elsewhere or on Escape. */
+.browse { position: sticky; top: 0; z-index: 20; background: var(--bg); border-block: 1px solid var(--border); }
+.browse-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 0.5rem; padding-block: 0.6rem; position: relative; }
+.browse-menu { position: static; }
+.browse-menu > summary {
+	list-style: none; cursor: pointer; display: inline-flex; align-items: baseline; gap: 0.45rem;
+	padding: 0.4rem 0.75rem; border: 1px solid var(--border); border-radius: var(--radius-pill); background: var(--bg);
+	font-family: var(--font-serif); font-size: 15px; line-height: 1.3; color: var(--fg-1); white-space: nowrap;
+	transition: border-color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out);
+}
+.browse-menu > summary::-webkit-details-marker { display: none; }
+.browse-menu > summary:hover, .browse-menu[open] > summary { border-color: var(--border-strong); }
+.browse-menu > summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.browse-menu > summary .browse-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-3); }
+.browse-menu > summary::after { content: ""; width: 0.4em; height: 0.4em; border-right: 1.5px solid var(--fg-3); border-bottom: 1.5px solid var(--fg-3); transform: translateY(-0.15em) rotate(45deg); transition: transform var(--duration-fast) var(--ease-out); }
+.browse-menu[open] > summary::after { transform: translateY(0.1em) rotate(-135deg); }
+/* a menu with a choice made: filled, so the bar shows at a glance what is narrowing the list */
+.browse-menu[data-chosen] > summary { background: var(--fg-1); border-color: var(--fg-1); color: var(--bg); }
+.browse-menu[data-chosen] > summary .browse-label { color: color-mix(in oklab, var(--bg) 70%, transparent); }
+.browse-menu[data-chosen] > summary::after { border-color: color-mix(in oklab, var(--bg) 70%, transparent); }
+
+.browse-panel {
+	position: absolute; left: 0; top: calc(100% - 0.2rem); z-index: 30; min-width: 17rem; max-width: min(26rem, 100%); max-height: min(24rem, 70vh); overflow: auto;
+	background: var(--bg); border: 1px solid var(--border-strong); border-radius: var(--radius-md); box-shadow: var(--shadow-md); padding: 0.35rem;
+}
+.browse-sort .browse-panel { left: auto; right: 0; min-width: 12rem; }
+.browse-panel ul { list-style: none; margin: 0; padding: 0; }
+.browse-panel a {
+	display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding: 0.5rem 0.65rem; border-radius: var(--radius-sm);
+	font-family: var(--font-serif); font-size: 15.5px; line-height: 1.3; color: var(--fg-1); text-decoration: none;
+}
+.browse-panel a:hover { background: var(--paper-soft); color: var(--fg-1); }
+.browse-panel a[aria-current="true"] { background: var(--paper-soft); }
+.browse-panel a[aria-current="true"] .browse-name::before { content: "✓ "; color: var(--primary); }
+.browse-panel .browse-n { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); }
+.browse-panel .browse-quiet a { color: var(--fg-3); font-size: 14.5px; }
+.browse-panel .browse-rule { border-top: 1px solid var(--border); margin: 0.3rem 0.2rem; }
+
+.browse-count { margin-left: auto; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-3); white-space: nowrap; }
+.browse-clear { margin-left: 0.25rem; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; }
+
+/* a phone: the menus wrap, and an open menu spans the bar */
+@media (max-width: 40rem) {
+	.browse-menu > summary { font-size: 14.5px; padding: 0.4rem 0.65rem; }
+	.browse-panel, .browse-sort .browse-panel { left: 0; right: 0; min-width: 0; max-width: none; }
+	.browse-count { margin-left: 0; flex-basis: 100%; order: 9; }
+}
