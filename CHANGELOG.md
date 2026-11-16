@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.0 — 2026-11-14
+
+A long-form layer, for sites that are mostly reading.
+
+- **`css/longform.css`** (loaded by `kit.css`): title and card sizes that follow the screen (`.lf-title`, `.lf-page-title`, `.lf-section-title`, `.lf-card-title`, `.lf-card-title-lg`), small text (`.lf-lede`, `.lf-summary`, `.lf-meta`, `.lf-flush`), quiet links and a button (`a.lf-quiet`, `a.lf-button`), and `.longform` for running text: lists, tables, and headings inside an essay at reading sizes. Moved here from the Journal, where it was written against real pieces at phone and wide-screen widths. Every value is a token or role already in the kit.
+- **`css/browse.css`** (loaded by `kit.css`): the browse bar, for any page that lists a growing collection. One row of menus that narrow and order the list (`.browse`, `.browse-bar`, `.browse-menu`, `.browse-panel`), each menu's button showing what is chosen, with a clear link (`.browse-clear`) and a count (`.browse-count`). Written for the Commons's page of charts and adopted by the Journal's indexes, so both sites are browsed the same way. `CLAUDE.md` has the markup and the rules.
+- Nothing existing changes. The base `h1` to `h4`, `p` and `a` styles are as they were; the new classes are opt-in.
+
 ## 1.1.0 — 2026-11-11
 
 The chart look moves into the kit, so every project draws charts in one grammar.

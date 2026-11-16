@@ -97,6 +97,46 @@ The signature micro-label, uppercase tracked-out mono (also the `.label` class):
 
 Body is 17px with 1.55 leading. Headings use tight leading and negative tracking (the base `h1–h4` styles handle it).
 
+## Long-form reading
+
+For a site that is mostly reading, `css/longform.css` (part of `kit.css`) gives titles that follow the screen and styles for running text. Put `.lf-title` on a piece's `h1`, `.lf-card-title` on a card's title, and wrap the body of an essay in `.longform`. The base heading styles are one size for every screen; these classes are how a reading page sizes them, so do not write heading sizes in a project.
+
+## The browse bar
+
+For any page that lists a growing collection (charts, pieces, talks), `css/browse.css` (part of `kit.css`) gives one bar that every Institute site uses, so a reader who has learned it on one site knows it on the next. Use it instead of rows of filter chips or tiles: those push the list down the page and grow with every topic.
+
+The rules:
+
+- **A menu per way of narrowing the list** (Topic, Place, Kind, Theme), then a count of what is shown, then a Sort menu at the right. Put the menus in the order a reader would reach for them; leave a menu out when it would hold one choice.
+- **Every choice is a link** that changes the address (`?topic=work&place=oregon`). A default (all, or the first order) is left out of the address. So a view can be shared, the back button works, and the bar works with JavaScript off.
+- **What is chosen shows in the menu's own button**, which fills in and names it. One Clear link takes every choice off. Do not add a second row of chips.
+- **The list starts directly under the bar**, newest first unless the page has a reason for another order.
+- **Counts beside the choices** in a menu, so nobody opens an empty view.
+
+```html
+<nav class="browse" aria-label="Browse the charts">
+	<div class="browse-bar">
+		<details class="browse-menu" name="browse" data-chosen>
+			<summary><span class="browse-label">Topic</span><span>AI at work</span></summary>
+			<div class="browse-panel">
+				<ul>
+					<li><a href="/chart"><span class="browse-name">All topics</span></a></li>
+					<li><a href="/chart?topic=work" aria-current="true"><span class="browse-name">AI at work</span><span class="browse-n">11</span></a></li>
+				</ul>
+			</div>
+		</details>
+		<a class="browse-clear" href="/chart">Clear</a>
+		<span class="browse-count">11 charts</span>
+		<details class="browse-menu browse-sort" name="browse">
+			<summary><span class="browse-label">Sort</span><span>Newest</span></summary>
+			<div class="browse-panel"><ul><li><a href="/chart?topic=work" aria-current="true"><span class="browse-name">Newest</span></a></li></ul></div>
+		</details>
+	</div>
+</nav>
+```
+
+`data-chosen` goes on a menu that has a choice made. Menus that share a `name` close one another. A choice set apart at the foot of a menu (a working view such as "not yet filed") goes in an `li.browse-quiet` after an `li.browse-rule`. The project adds a few lines of script to close an open menu on a click elsewhere or on Escape; each site has a small `BrowseBar` component that does this and builds the links.
+
 ## Component idioms
 
 **Stat card**: bordered card on paper, mono label, big Hedvig value.
