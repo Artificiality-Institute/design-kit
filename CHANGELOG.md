@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.3.0 — 2026-11-19
+
+Two changes from the Journal's layout review, both chosen by looking at real pages side by side.
+
+- **The small label is one size up: 11px, from 10px.** `.label`, the browse bar's menu labels (`.browse-label`) and table headers inside `.longform`. The colour is unchanged. 10px was hard to read on a phone. A project that wrote the label out by hand (`font-mono text-[10px] uppercase ...`) does not change until it uses `.label`; use the class, so the next change reaches everything.
+- **A reading measure**: `--measure-reading` (38rem) and `.lf-measure`, the column a piece is read in. At the long-form size it gives about 66 characters a line; the 44rem column the Journal used gave about 74.
+- Written down, not changed: on a page 1rem is 17px, because the kit sets the base size on `<html>`. The px in the type scale's comments are sizes at a 16px rem, so everything renders 6.25% larger than they say. The comparison kept the sizes as they render; `foundations.css` now says so.
+
 ## 1.2.0 — 2026-11-14
 
 A long-form layer, for sites that are mostly reading.
