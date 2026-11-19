@@ -30,7 +30,7 @@
 .browse-menu > summary::-webkit-details-marker { display: none; }
 .browse-menu > summary:hover, .browse-menu[open] > summary { border-color: var(--border-strong); }
 .browse-menu > summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
-.browse-menu > summary .browse-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-3); }
+.browse-menu > summary .browse-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-3); }
 .browse-menu > summary::after { content: ""; width: 0.4em; height: 0.4em; border-right: 1.5px solid var(--fg-3); border-bottom: 1.5px solid var(--fg-3); transform: translateY(-0.15em) rotate(45deg); transition: transform var(--duration-fast) var(--ease-out); }
 .browse-menu[open] > summary::after { transform: translateY(0.1em) rotate(-135deg); }
 /* a menu with a choice made: filled, so the bar shows at a glance what is narrowing the list */

@@ -66,7 +66,11 @@
   --font-ui:           "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   --font-mono:         "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
 
-  /* Type scale (modular, ~1.2 ratio scaled for editorial use) */
+  /* Type scale (modular, ~1.2 ratio scaled for editorial use).
+     The page's base size is 17px: semantic.css sets it on <html>, so on a page 1rem is 17px.
+     The px beside each step is its size at a 16px rem; on a page it is 6.25% larger
+     (text-lg is 20.2px, measure-base is 748px). Kept on purpose: the Journal's reading
+     comparison of 19 November 2026 chose these sizes as they render. */
   --text-2xs:          0.75rem;     /* 12px — fine print, captions */
   --text-xs:           0.8125rem;   /* 13px — meta, eyebrow */
   --text-sm:           0.9375rem;   /* 15px — small body */
@@ -153,6 +157,7 @@
   /* ============================ LAYOUT ============================ */
   --measure-narrow:    36rem;       /* 576px — long-form prose */
   --measure-base:      44rem;       /* 704px — essays */
+  --measure-reading:   38rem;       /* 646px on a page — the reading column, about 66 characters a line */
   --measure-wide:      62rem;       /* 992px — wide layouts */
   --container:         76rem;       /* 1216px — page max */
 }

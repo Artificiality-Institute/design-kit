@@ -89,17 +89,17 @@ Never pure black, cold grays, or blue-tinted shadows. Everything warm-leaning.
 | Inter | `font-ui` | dense UI: forms, buttons, small tables |
 | JetBrains Mono | `font-mono` | code, data values, micro-labels |
 
-The signature micro-label, uppercase tracked-out mono (also the `.label` class):
+The signature micro-label, uppercase tracked-out mono, is the `.label` class. Use the class and do not write its size out by hand, so a change to the label in the kit reaches every one:
 
 ```svelte
-<div class="font-mono text-[10px] uppercase tracking-[0.12em] text-fg-3">Companies scored</div>
+<div class="label">Companies scored</div>
 ```
 
-Body is 17px with 1.55 leading. Headings use tight leading and negative tracking (the base `h1–h4` styles handle it).
+Body is 17px with 1.55 leading. The kit sets that base size on the page itself, so 1rem is 17px on a page, not 16. Headings use tight leading and negative tracking (the base `h1–h4` styles handle it).
 
 ## Long-form reading
 
-For a site that is mostly reading, `css/longform.css` (part of `kit.css`) gives titles that follow the screen and styles for running text. Put `.lf-title` on a piece's `h1`, `.lf-card-title` on a card's title, and wrap the body of an essay in `.longform`. The base heading styles are one size for every screen; these classes are how a reading page sizes them, so do not write heading sizes in a project.
+For a site that is mostly reading, `css/longform.css` (part of `kit.css`) gives titles that follow the screen and styles for running text. Put `.lf-title` on a piece's `h1`, `.lf-card-title` on a card's title, wrap the body of an essay in `.longform`, and give the title block and the body the reading column with `.lf-measure` (38rem, about 66 characters a line). The base heading styles are one size for every screen; these classes are how a reading page sizes them, so do not write heading sizes in a project.
 
 ## The browse bar
 
@@ -164,7 +164,7 @@ The rules:
 
 ## Layout rules
 
-- Page container `mx-auto max-w-[76rem] px-8` (18px side padding on mobile). Prose measures 36rem / 44rem / 62rem.
+- Page container `mx-auto max-w-[76rem] px-8` (18px side padding on mobile). Prose measures 36rem / 44rem / 62rem; the reading column for a piece is `--measure-reading` (38rem).
 - Cards `rounded-card` with `border-border`; shadows only when something floats, always the warm `--shadow-*` tokens.
 - Motion fast and quiet: 120–200ms with `--ease-out`. No bouncing.
 

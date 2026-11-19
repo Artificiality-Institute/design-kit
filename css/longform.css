@@ -54,6 +54,11 @@
 	color: var(--fg-3);
 	margin: 0;
 }
+/* The column a piece is read in: about 66 characters of running text at the long-form size.
+   Put it on the wrapper of the title block and of the body, with the page's own centring. */
+.lf-measure {
+	max-width: var(--measure-reading);
+}
 .lf-flush {
 	margin: 0;
 }
@@ -166,7 +171,7 @@ a.lf-button:hover {
 .longform th {
 	background: var(--paper-soft);
 	font-family: var(--font-mono);
-	font-size: 10px;
+	font-size: 11px;
 	font-weight: 500;
 	letter-spacing: 0.12em;
 	text-transform: uppercase;
