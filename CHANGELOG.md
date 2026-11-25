@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.4.0 — 2026-11-25
+
+For the chart forms added to the `present` package in its version 0.5.0. Nothing drawn today changes.
+
+- **Chart roles for a map's classes**: `--chart-seq-1` to `--chart-seq-5` in `css/charts.css`, light to dark, pointing at the palette's `--seq-1` to `--seq-5`. A palette that fills the `seq-*` slots re-colours every map.
+- **The chart style guide (`docs/charts.md`) names the newer forms**: the table with in-cell bars, paired dots, the scatter, the tile map, the timeline and the flow each have a row in "Choosing the form", and a paragraph says when to draw a range around a value and what it means for the headline. The colour section says how a map uses the ramp and marks the subject.
+
 ## 1.3.0 — 2026-11-19
 
 Two changes from the Journal's layout review, both chosen by looking at real pages side by side.
