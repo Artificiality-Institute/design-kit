@@ -31,6 +31,13 @@
   --chart-part-3:          var(--chart-context);
   --chart-part-4:          var(--chart-context-faint);
 
+  /* A map's classes, light to dark: five steps of the palette's sequential ramp. */
+  --chart-seq-1:           var(--seq-1);
+  --chart-seq-2:           var(--seq-2);
+  --chart-seq-3:           var(--seq-3);
+  --chart-seq-4:           var(--seq-4);
+  --chart-seq-5:           var(--seq-5);
+
   /* — Furniture: neutral in every palette ———————————————————————————— */
   --chart-grid:            var(--border);           /* hairline gridlines, the median marker */
   --chart-zero:            var(--muted-strong);     /* the zero line, when zero is on the chart */

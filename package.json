@@ -1,6 +1,6 @@
 {
   "name": "@artificiality/design-kit",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Artificiality Institute design kit: foundations, named colors, palettes with chart ramps, semantic roles, chart roles and the chart style guide, Tailwind theme, fonts and logos.",
   "license": "MIT",
   "type": "module",

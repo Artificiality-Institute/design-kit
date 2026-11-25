@@ -92,6 +92,17 @@ The form serves the message, and the message is one of a few kinds:
 | a before and after | slope chart | `Slope` |
 | shares of use shifting over time | waves: one dot per wave on a time axis, the subject's emphasised | `Waves` |
 | one magnitude, or two set against each other | a big number, or a pair of numbers, not a chart (see below) | `BigNumber` |
+| more numbers than three big numbers can hold | a table with a thin bar in every cell: one row for each thing, one column for each period, group or measure | `BarTable` |
+| a before and after, or two groups, across several things | paired dots: two dots on one line for each thing, the gap between them the message | `PairedDots` |
+| two measures set against each other | scatter, the subject emphasised and named, a dashed hairline at each median, no trend line | `Scatter` |
+| a pattern across the country that a ranking hides | a tile map: every state an equal square, shaded in five steps, each printing its value | `TileMap` |
+| what happened when | a timeline: a mark for every dated event, a row for each kind, the few that matter named | `Timeline` |
+| who pays whom, and how much | a flow: those who pay on the left, those who are paid on the right, a band as thick as the amount | `Flow` |
+
+**A range around a value.** A survey estimate has a margin of error; a projection has a low and a high. Where
+the source gives one, draw it: on a line as a pale band in the series' own colour, on a ranked bar as a thin
+line with end marks across the bar's end. A claim that two values differ is checked against the ranges before
+it is written: where they overlap, the headline says the two cannot be told apart.
 
 **When a number is the chart.** If the message is a single magnitude ("23% of firms use AI"), or
 two magnitudes whose contrast is the point ("23% here against 31% next door"), a chart spends ink
@@ -140,7 +151,9 @@ palette fills the same roles with its own hues.
 | `--chart-positive` / `--chart-negative` | moss / clay-deep | only where sign is the message |
 
 Sequential and diverging scales come from the palette's `seq-*` and `div-*` ramps; use them when a
-map or a heatmap earns one. Never use pure black or cold grays.
+map or a heatmap earns one. A map's five classes are the roles `--chart-seq-1` to `--chart-seq-5`,
+light to dark; the subject on a map is outlined in the emphasis colour, not filled with it. Never use
+pure black or cold grays.
 
 ## Hover
 
